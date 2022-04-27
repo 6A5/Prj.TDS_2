@@ -41,6 +41,7 @@ public class Soldier_Normal_bullet : MonoBehaviour
         Collider2D target = Physics2D.OverlapCircle(transform.position, colliderRange);
         if (target.gameObject.CompareTag("Enemy"))
         {
+            target.GetComponent<EnemyHealth>().GotHit(b_damage);
             Destroy(this.gameObject);
         }
     }

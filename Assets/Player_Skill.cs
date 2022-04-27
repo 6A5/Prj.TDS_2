@@ -42,7 +42,7 @@ public class Player_Skill : MonoBehaviour
             Debug.Log("SHOOT!");
             GameObject bullet = Instantiate(normalBullet_obj, normalBullet_spawnPoint.position,
                 transform.rotation * Quaternion.Euler(new Vector3(0,0,-90 + Random.Range(normalBullet_aimOffset, -normalBullet_aimOffset))));
-            bullet.GetComponent<Soldier_Normal_bullet>().SetBulletState(normalBullet_speed, normalBullet_range, 10);
+            bullet.GetComponent<Soldier_Normal_bullet>().SetBulletState(normalBullet_speed, normalBullet_range, 2);
             normalBullet_cooldown_last = Time.time;
         }
     }

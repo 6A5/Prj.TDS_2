@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_State : MonoBehaviour
+public class Player_Attribute : MonoBehaviour
 {
     [Header("«D%¼Æ")]
 
