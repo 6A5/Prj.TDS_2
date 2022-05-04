@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Attribute : MonoBehaviour
+[CreateAssetMenu(fileName = "HeroData", menuName = "ScriptableObjects/HeroData", order = 1)]
+public class HeroScriptObject : ScriptableObject
 {
     [Header("«D%¼Æ")]
 
