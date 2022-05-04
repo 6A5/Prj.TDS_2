@@ -12,6 +12,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] GameObject player;
     NavMeshAgent agent;
 
+    [SerializeField] Transform latePos;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -19,22 +20,25 @@ public class EnemyMove : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        latePos = transform;
     }
 
     private void Update()
     {
         agent.SetDestination(player.transform.position);
+
     }
 
     private void LateUpdate()
     {
-        Utils.RotateDirectionToTarget(player.transform.position, transform);
+        print(agent.velocity.normalized);
+        Utils.RotateDirectionByUnitVector(agent.velocity.normalized,transform);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject != player) { return; }
-
+        if (collision.gameObject != player) { return; }
         print("hit");
     }
 }

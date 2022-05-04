@@ -29,6 +29,17 @@ namespace NkE1.Utilities
             self.eulerAngles = new Vector3(0, 0, angle);
         }
         /// <summary>
+        /// 依照單位向量進行旋轉
+        /// </summary>
+        /// <param name="vector">單位向量</param>
+        /// <param name="self">旋轉的物體</param>
+        public static void RotateDirectionByUnitVector(Vector3 vector, Transform self)
+        {
+            float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+            self.eulerAngles = new Vector3(0, 0, angle);
+        }
+        
+        /// <summary>
         /// 取得旋轉角度
         /// </summary>
         /// <param name="targetPos">目標物</param>
@@ -50,8 +61,8 @@ namespace NkE1.Utilities
             vec.z = 0;
             return vec;
         }
+        
         #endregion
-
 
     }
 }
