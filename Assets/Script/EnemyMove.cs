@@ -32,7 +32,7 @@ public class EnemyMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        print(agent.velocity.normalized);
+        // print(agent.velocity.normalized);
         Utils.RotateDirectionByUnitVector(agent.velocity.normalized,transform);
     }
 

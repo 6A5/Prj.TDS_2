@@ -25857,7 +25857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   latePos: {fileID: 0}
-  head: {fileID: 175200995}
 --- !u!195 &1291008248
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -25982,8 +25981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6024fbc7d9692974da319438eb762ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpd: 5
   rb2d: {fileID: 1796766272}
+  movementSpd: 5
 --- !u!50 &1796766272
 Rigidbody2D:
   serializedVersion: 4
@@ -26052,7 +26051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88479611ad3334e45a3b19b723b4b394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroData: {fileID: 0}
+  heroData: {fileID: 11400000, guid: a770ca4b7ef26454caa3fb72d650da88, type: 2}
   maxHP: 0
   hpRecovery: 0
   movementSpd: 0

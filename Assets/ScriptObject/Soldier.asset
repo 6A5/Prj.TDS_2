@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-137492609773534708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a3ce4b035e4c24790912939b028614, type: 3}
+  m_Name: SMG
+  m_EditorClassIdentifier: 
+  _myHSO: {fileID: 11400000}
+  _name: SMG
+  _damage: 2
+  _projectileSpeed: 10
+  _projectileCount: 1
+  _cooldown: 0.05
+  _leadTime: 0
+  _pulsingTime: 0
+  _scope: 0
+  _duration: 0
+  _distance: 99
+  _projectileObj: {fileID: 7871888052990280968, guid: aff1a8b4aa1280741a762a6d29b4a6d2, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1fd72ad908a2b4894a1872f3129c64, type: 3}
+  m_Name: Soldier
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  hpRecovery: 1
+  movementSpd: 5
+  defense: 1
+  extraProjectile: 0
+  extraLife: 0
+  maxHP_p: 100
+  movementSpd_p: 100
+  damage_p: 100
+  cooldown_p: 100
+  duration_p: 100
+  scope_p: 100
+  extraDrop_p: 100
+  extraMoney_p: 100
+  extraXP_p: 100
+  _skillSO:
+  - {fileID: -137492609773534708}

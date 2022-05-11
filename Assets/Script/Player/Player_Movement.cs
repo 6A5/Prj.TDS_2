@@ -5,11 +5,20 @@ using NkE1.Utilities;
 
 public class Player_Movement : MonoBehaviour
 {
-    public float movementSpd = 5;
+    // 元件
     public Rigidbody2D rb2d;
 
+    // 數值
+    public float movementSpd = 0;
+
+    // 變數
     Vector2 movement;
-    
+
+    private void Start()
+    {
+        movementSpd = Player_Attribute.Instance.movementSpd;
+    }
+
     void Update()
     {
         movement.x = Input.GetAxis("Horizontal");

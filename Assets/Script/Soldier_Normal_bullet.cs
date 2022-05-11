@@ -34,6 +34,9 @@ public class Soldier_Normal_bullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// ¸I¼²¼Ä¤H
+    /// </summary>
     void Hit()
     {
         if (!Physics2D.OverlapCircle(transform.position, colliderRange)) { return; }

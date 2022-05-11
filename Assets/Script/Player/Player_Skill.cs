@@ -37,6 +37,11 @@ public class Player_Skill : MonoBehaviour
     /// </summary>
     [SerializeField] float normalBullet_aimOffset;
 
+    private void Start()
+    {
+        Debug.Log(Player_Attribute.Instance.heroData.name);
+    }
+
     private void Update()
     {
         if (Input.GetMouseButton(0) && normalBullet_cooldown_last + normalBullet_cooldown < Time.time)
@@ -48,4 +53,9 @@ public class Player_Skill : MonoBehaviour
             normalBullet_cooldown_last = Time.time;
         }
     }
+}
+
+public class SkillConstruct
+{
+
 }
