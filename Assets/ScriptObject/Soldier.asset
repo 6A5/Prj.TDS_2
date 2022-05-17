@@ -53,3 +53,28 @@ MonoBehaviour:
   extraXP_p: 100
   _skillSO:
   - {fileID: -137492609773534708}
+  - {fileID: 2789937876065086802}
+--- !u!114 &2789937876065086802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a3ce4b035e4c24790912939b028614, type: 3}
+  m_Name: ShotGun
+  m_EditorClassIdentifier: 
+  _myHSO: {fileID: 11400000}
+  _name: ShotGun
+  _damage: 10
+  _projectileSpeed: 15
+  _projectileCount: 12
+  _cooldown: 5
+  _leadTime: 0
+  _pulsingTime: 0
+  _scope: 0
+  _duration: 0
+  _distance: 30
+  _projectileObj: {fileID: 0}

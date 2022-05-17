@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Skill : MonoBehaviour
+public class PlayerSkill : MonoBehaviour
 {
     /// <summary>
     /// 普通子彈
     /// </summary>
     public GameObject normalBullet_obj;
 
-    [SerializeField] float normalBullet_dagage;
+    /// <summary>
+    /// 普通子彈傷害
+    /// </summary>
+    [SerializeField] float normalBullet_damage;
 
     /// <summary>
     /// 普通子彈速度
@@ -37,9 +40,15 @@ public class Player_Skill : MonoBehaviour
     /// </summary>
     [SerializeField] float normalBullet_aimOffset;
 
+    /// <summary>
+    /// 技能清單
+    /// </summary>
+    [SerializeField] List<SkillScriptObject> m_skillSO;
+
     private void Start()
     {
-        Debug.Log(Player_Attribute.Instance.heroData.name);
+        m_skillSO = PlayerAttribute.Instance.heroData.SkillSO;
+        Debug.Log(m_skillSO[0].name);
     }
 
     private void Update()
@@ -47,15 +56,12 @@ public class Player_Skill : MonoBehaviour
         if (Input.GetMouseButton(0) && normalBullet_cooldown_last + normalBullet_cooldown < Time.time)
         {
             Debug.Log("SHOOT!");
+
             GameObject bullet = Instantiate(normalBullet_obj, normalBullet_spawnPoint.position,
                 transform.rotation * Quaternion.Euler(new Vector3(0,0,-90 + Random.Range(normalBullet_aimOffset, -normalBullet_aimOffset))));
-            bullet.GetComponent<Soldier_Normal_bullet>().SetBulletState(normalBullet_speed, normalBullet_range, normalBullet_dagage);
+            bullet.GetComponent<SoldierNormalBullet>().SetBulletState(normalBullet_speed, normalBullet_range, normalBullet_damage);
+
             normalBullet_cooldown_last = Time.time;
         }
     }
-}
-
-public class SkillConstruct
-{
-
 }

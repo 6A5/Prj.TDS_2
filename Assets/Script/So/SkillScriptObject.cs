@@ -18,7 +18,7 @@ public class SkillScriptObject : ScriptableObject
     // §Þ¯àÄÝ©Ê
     [SerializeField] private float _damage;
     [SerializeField] private float _projectileSpeed;
-    [SerializeField] private int _projectileCount;
+    [SerializeField] private int   _projectileCount;
     [SerializeField] private float _cooldown;
     [SerializeField] private float _leadTime;
     [SerializeField] private float _pulsingTime;

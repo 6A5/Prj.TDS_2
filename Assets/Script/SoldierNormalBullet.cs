@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier_Normal_bullet : MonoBehaviour
+public class SoldierNormalBullet : MonoBehaviour
 {
     //¤l¼u¼Æ­È
     float b_speed = 0;

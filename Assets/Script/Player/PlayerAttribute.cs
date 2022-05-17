@@ -1,20 +1,23 @@
+using Mono.Cecil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Attribute : MonoBehaviour
+public class PlayerAttribute : MonoBehaviour
 {
     public HeroScriptObject heroData;
 
     // 建構式 以後引用使用 Player_Attribute.Instance;
-    private static Player_Attribute _instance = null;
-    public static Player_Attribute Instance
+    private static PlayerAttribute _instance = null;
+    public static PlayerAttribute Instance
     {
         get
         {
             return _instance;
         }
     }
+
+    // 動態
 
     [Header("非%數")]
     [Tooltip("最大生命")]
@@ -50,6 +53,9 @@ public class Player_Attribute : MonoBehaviour
     [Tooltip("額外經驗趴數")]
     public float extraXP_p;
 
+    [Header("技能")]
+    public List<SkillAttrAfterUpdate> skillAttrs = new List<SkillAttrAfterUpdate>();
+
     private void Awake()
     {
         _instance = this;
@@ -71,12 +77,49 @@ public class Player_Attribute : MonoBehaviour
         extraDrop_p     = heroData.extraDrop_p;
         extraMoney_p    = heroData.extraMoney_p;
         extraXP_p       = heroData.extraXP_p;
+
+        for (int i = 0; i < heroData.SkillSO.Count; i++)
+        {
+            SkillScriptObject sso = heroData.SkillSO[i];
+
+            skillAttrs.Add(new SkillAttrAfterUpdate());
+            skillAttrs[i].damage = sso.Damage;
+            skillAttrs[i].projectileSpeed = sso.ProjectileSpeed;
+            skillAttrs[i].projectileCount = sso.ProjectileCount;
+            skillAttrs[i].cooldown = sso.Cooldown;
+            skillAttrs[i].leadTime = sso.LeadTime;
+            skillAttrs[i].pulsingTime = sso.PulsingTime;
+            skillAttrs[i].scope = sso.Scope;
+            skillAttrs[i].duration = sso.Duration;
+            skillAttrs[i].distance = sso.Distance;
+        }
         #endregion
     }
 
     private void Start()
     {
-
+        for (int i = 0; i < heroData.SkillSO.Count; i++)
+        {
+            SkillScriptObject so = heroData.SkillSO[i];
+        }
     }
 
+    #region 更新Attr
+
+
+    #endregion
+}
+
+[System.Serializable]
+public class SkillAttrAfterUpdate
+{
+    public float damage;
+    public float projectileSpeed;
+    public int   projectileCount;
+    public float cooldown;
+    public float leadTime;
+    public float pulsingTime;
+    public float scope;
+    public float duration;
+    public float distance;
 }

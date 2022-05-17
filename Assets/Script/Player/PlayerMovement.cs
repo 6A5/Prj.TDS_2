@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NkE1.Utilities;
 
-public class Player_Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     // ¤¸¥ó
     public Rigidbody2D rb2d;
@@ -16,7 +16,7 @@ public class Player_Movement : MonoBehaviour
 
     private void Start()
     {
-        movementSpd = Player_Attribute.Instance.movementSpd;
+        movementSpd = PlayerAttribute.Instance.movementSpd;
     }
 
     void Update()
