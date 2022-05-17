@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierNormalBullet : MonoBehaviour
+public class SoldierNormalBullet : MonoBehaviour, IProjectileSpawn
 {
+    /// <summary>
+    /// 技能資訊
+    /// </summary>
+    SkillAttrAfterUpdate m_saau;
+
     //子彈數值
     float b_speed = 0;
     float b_distance = 99;
@@ -54,16 +59,19 @@ public class SoldierNormalBullet : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, colliderRange);
     }
 
-    /// <summary>
-    /// 設定子彈數值
-    /// </summary>
-    /// <param name="speed">速度</param>
-    /// <param name="distance">距離</param>
-    /// <param name="damage">傷害</param>
-    public void SetBulletState(float speed, float distance, float damage)
+    /* 取得Projectile資訊 初始化要求列表
+     * 士兵普通子彈
+     * - 速度
+     * - 距離
+     * - 傷害
+     */
+    public void SetProjectileAttr(int skillIndex)
     {
-        b_speed = speed;
-        b_distance = distance;
-        b_damage = damage;
+        m_saau = PlayerAttribute.Instance.skillAttrs[skillIndex];
+
+        b_damage = m_saau.damage;
+        b_speed = m_saau.projectileSpeed;
+        b_distance = m_saau.distance;
+
     }
 }

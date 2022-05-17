@@ -17,12 +17,13 @@ MonoBehaviour:
   _damage: 2
   _projectileSpeed: 10
   _projectileCount: 1
-  _cooldown: 0.05
+  _cooldown: 0.1
   _leadTime: 0
   _pulsingTime: 0
   _scope: 0
   _duration: 0
-  _distance: 99
+  _distance: 15
+  _aimOffset: 7
   _projectileObj: {fileID: 7871888052990280968, guid: aff1a8b4aa1280741a762a6d29b4a6d2, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -77,4 +78,5 @@ MonoBehaviour:
   _scope: 0
   _duration: 0
   _distance: 30
+  _aimOffset: 0
   _projectileObj: {fileID: 0}

@@ -4,62 +4,38 @@ using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
 {
-    /// <summary>
-    /// 普通子彈
-    /// </summary>
-    public GameObject normalBullet_obj;
+
 
     /// <summary>
-    /// 普通子彈傷害
+    /// 普通子彈冷卻計時器
     /// </summary>
-    [SerializeField] float normalBullet_damage;
-
-    /// <summary>
-    /// 普通子彈速度
-    /// </summary>
-    [SerializeField] float normalBullet_speed;
-
-    /// <summary>
-    /// 普通子彈冷卻
-    /// </summary>
-    [SerializeField] float normalBullet_cooldown;
     float normalBullet_cooldown_last;
-
-    /// <summary>
-    /// 普通子彈距離
-    /// </summary>
-    [SerializeField] float normalBullet_range;
-
     /// <summary>
     /// 普通子彈生成點
     /// </summary>
     [SerializeField] Transform normalBullet_spawnPoint;
 
-    /// <summary>
-    /// 普通子彈浮動參數
-    /// </summary>
-    [SerializeField] float normalBullet_aimOffset;
 
     /// <summary>
     /// 技能清單
     /// </summary>
-    [SerializeField] List<SkillScriptObject> m_skillSO;
+    List<SkillAttrAfterUpdate> m_saau;
 
     private void Start()
     {
-        m_skillSO = PlayerAttribute.Instance.heroData.SkillSO;
-        Debug.Log(m_skillSO[0].name);
+        m_saau = PlayerAttribute.Instance.skillAttrs;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && normalBullet_cooldown_last + normalBullet_cooldown < Time.time)
+        if (Input.GetMouseButton(0) && normalBullet_cooldown_last + m_saau[0].cooldown < Time.time)
         {
             Debug.Log("SHOOT!");
 
-            GameObject bullet = Instantiate(normalBullet_obj, normalBullet_spawnPoint.position,
-                transform.rotation * Quaternion.Euler(new Vector3(0,0,-90 + Random.Range(normalBullet_aimOffset, -normalBullet_aimOffset))));
-            bullet.GetComponent<SoldierNormalBullet>().SetBulletState(normalBullet_speed, normalBullet_range, normalBullet_damage);
+            GameObject bullet = Instantiate(m_saau[0].projectileObj, normalBullet_spawnPoint.position,
+                transform.rotation * Quaternion.Euler(new Vector3(0,0,-90 + Random.Range(m_saau[0].aimOffset, -m_saau[0].aimOffset))));
+
+            bullet.GetComponent<IProjectileSpawn>().SetProjectileAttr(0);
 
             normalBullet_cooldown_last = Time.time;
         }

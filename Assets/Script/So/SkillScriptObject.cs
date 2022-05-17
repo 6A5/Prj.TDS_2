@@ -18,13 +18,14 @@ public class SkillScriptObject : ScriptableObject
     // 技能屬性
     [SerializeField] private float _damage;
     [SerializeField] private float _projectileSpeed;
-    [SerializeField] private int   _projectileCount;
+    [SerializeField] private int _projectileCount;
     [SerializeField] private float _cooldown;
     [SerializeField] private float _leadTime;
     [SerializeField] private float _pulsingTime;
     [SerializeField] private float _scope;
     [SerializeField] private float _duration;
     [SerializeField] private float _distance;
+    [SerializeField] private float _aimOffset;
 
     // 技能物件
     [SerializeField] private GameObject _projectileObj;
@@ -42,6 +43,7 @@ public class SkillScriptObject : ScriptableObject
     public float Scope { get => _scope; }
     public float Duration { get => _duration; }
     public float Distance { get => _distance; }
+    public float AimOffset { get => _aimOffset; }
 
     public GameObject ProjectileObj { get => _projectileObj; }
 

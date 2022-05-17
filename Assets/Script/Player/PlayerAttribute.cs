@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 public class PlayerAttribute : MonoBehaviour
 {
     public HeroScriptObject heroData;
@@ -60,23 +65,45 @@ public class PlayerAttribute : MonoBehaviour
     {
         _instance = this;
 
-        #region 初始化
-        maxHP           = heroData.maxHP;
-        hpRecovery      = heroData.hpRecovery;
-        movementSpd     = heroData.movementSpd;
-        defense         = heroData.defense;
-        extraProjectile = heroData.extraProjectile;
-        extraLife       = heroData.extraLife;
+        initialize();
+    }
 
-        maxHP_p         = heroData.maxHP_p;
-        movementSpd_p   = heroData.movementSpd_p;
-        damage_p        = heroData.damage_p;
-        cooldown_p      = heroData.cooldown_p;
-        duration_p      = heroData.duration_p;
-        scope_p         = heroData.scope_p;
-        extraDrop_p     = heroData.extraDrop_p;
-        extraMoney_p    = heroData.extraMoney_p;
-        extraXP_p       = heroData.extraXP_p;
+    private void Start()
+    {
+        /*
+        for (int i = 0; i < heroData.SkillSO.Count; i++)
+        {
+            SkillScriptObject so = heroData.SkillSO[i];
+        }
+        */
+    }
+
+    #region 更新Attr
+
+
+    #endregion
+
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    public void initialize()
+    {
+        maxHP = heroData.maxHP;
+        hpRecovery = heroData.hpRecovery;
+        movementSpd = heroData.movementSpd;
+        defense = heroData.defense;
+        extraProjectile = heroData.extraProjectile;
+        extraLife = heroData.extraLife;
+
+        maxHP_p = heroData.maxHP_p;
+        movementSpd_p = heroData.movementSpd_p;
+        damage_p = heroData.damage_p;
+        cooldown_p = heroData.cooldown_p;
+        duration_p = heroData.duration_p;
+        scope_p = heroData.scope_p;
+        extraDrop_p = heroData.extraDrop_p;
+        extraMoney_p = heroData.extraMoney_p;
+        extraXP_p = heroData.extraXP_p;
 
         for (int i = 0; i < heroData.SkillSO.Count; i++)
         {
@@ -92,22 +119,10 @@ public class PlayerAttribute : MonoBehaviour
             skillAttrs[i].scope = sso.Scope;
             skillAttrs[i].duration = sso.Duration;
             skillAttrs[i].distance = sso.Distance;
-        }
-        #endregion
-    }
-
-    private void Start()
-    {
-        for (int i = 0; i < heroData.SkillSO.Count; i++)
-        {
-            SkillScriptObject so = heroData.SkillSO[i];
+            skillAttrs[i].aimOffset = sso.AimOffset;
+            skillAttrs[i].projectileObj = sso.ProjectileObj;
         }
     }
-
-    #region 更新Attr
-
-
-    #endregion
 }
 
 [System.Serializable]
@@ -122,4 +137,22 @@ public class SkillAttrAfterUpdate
     public float scope;
     public float duration;
     public float distance;
+    public float aimOffset;
+    public GameObject projectileObj;
+}
+
+[CustomEditor(typeof(PlayerAttribute))]
+public class SOTestingButton : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        PlayerAttribute pa = (PlayerAttribute)target;
+
+        if (GUILayout.Button("_ResetAttrsFromSO_"))
+        {
+            pa.initialize();
+        }
+    }
 }

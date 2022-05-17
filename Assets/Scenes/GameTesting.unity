@@ -25640,7 +25640,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -25735,7 +25735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1291008243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26032,13 +26032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7e602a0affd2d478d6791a358ba87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalBullet_obj: {fileID: 7871888052990280968, guid: aff1a8b4aa1280741a762a6d29b4a6d2, type: 3}
-  normalBullet_dagage: 2
-  normalBullet_speed: 24
-  normalBullet_cooldown: 0.05
-  normalBullet_range: 10
   normalBullet_spawnPoint: {fileID: 1206547757}
-  normalBullet_aimOffset: 3
 --- !u!114 &1796766275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26067,6 +26061,7 @@ MonoBehaviour:
   extraDrop_p: 0
   extraMoney_p: 0
   extraXP_p: 0
+  skillAttrs: []
 --- !u!1 &1829072877
 GameObject:
   m_ObjectHideFlags: 0
