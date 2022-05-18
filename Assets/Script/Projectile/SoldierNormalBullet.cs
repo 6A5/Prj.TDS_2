@@ -52,6 +52,10 @@ public class SoldierNormalBullet : MonoBehaviour, IProjectileSpawn
             target.GetComponent<EnemyHealth>().GotHit(b_damage);
             Destroy(this.gameObject);
         }
+        else if (target.gameObject.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()

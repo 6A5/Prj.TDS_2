@@ -10,25 +10,39 @@ public class SkillScriptObject : ScriptableObject
 {
 
     // 英雄腳本物件
-    [SerializeField] private HeroScriptObject _myHSO;
+    [SerializeField, Tooltip("英雄")]
+    private HeroScriptObject _myHSO;
 
     // 技能名稱
-    [SerializeField] private string _name;
+    [SerializeField, Tooltip("名稱")]
+    private string _name;
 
     // 技能屬性
-    [SerializeField] private float _damage;
-    [SerializeField] private float _projectileSpeed;
-    [SerializeField] private int _projectileCount;
-    [SerializeField] private float _cooldown;
-    [SerializeField] private float _leadTime;
-    [SerializeField] private float _pulsingTime;
-    [SerializeField] private float _scope;
-    [SerializeField] private float _duration;
-    [SerializeField] private float _distance;
-    [SerializeField] private float _aimOffset;
+    [SerializeField, Tooltip("傷害")] 
+    private float _damage;          
+    [SerializeField, Tooltip("速度")]
+    private float _projectileSpeed; 
+    [SerializeField, Tooltip("數量")]
+    private int   _projectileCount; 
+    [SerializeField, Tooltip("冷卻")]
+    private float _cooldown;        
+    [SerializeField, Tooltip("前導")]
+    private float _leadTime;        
+    [SerializeField, Tooltip("脈衝")]
+    private float _pulsingTime;     
+    [SerializeField, Tooltip("範圍")]
+    private float _scope;           
+    [SerializeField, Tooltip("持續")]
+    private float _duration;        
+    [SerializeField, Tooltip("距離")]
+    private float _distance;        
+    [SerializeField, Tooltip("偏移")]
+    private float _aimOffset;       
+    [SerializeField, Tooltip("擊退")]
+    private float _knockback;       
 
     // 技能物件
-    [SerializeField] private GameObject _projectileObj;
+    [SerializeField, Tooltip("子彈Prefab")] private GameObject _projectileObj; // 子彈Prefab
 
     public HeroScriptObject MyHSO { get => _myHSO; }
 
@@ -44,6 +58,7 @@ public class SkillScriptObject : ScriptableObject
     public float Duration { get => _duration; }
     public float Distance { get => _distance; }
     public float AimOffset { get => _aimOffset; }
+    public float Knockback { get => _knockback; }
 
     public GameObject ProjectileObj { get => _projectileObj; }
 
