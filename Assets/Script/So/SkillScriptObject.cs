@@ -39,7 +39,9 @@ public class SkillScriptObject : ScriptableObject
     [SerializeField, Tooltip("偏移")]
     private float _aimOffset;       
     [SerializeField, Tooltip("擊退")]
-    private float _knockback;       
+    private float _knockback;
+    [SerializeField, Tooltip("角度")]
+    private float _angle;
 
     // 技能物件
     [SerializeField, Tooltip("子彈Prefab")] private GameObject _projectileObj; // 子彈Prefab
@@ -59,6 +61,7 @@ public class SkillScriptObject : ScriptableObject
     public float Distance { get => _distance; }
     public float AimOffset { get => _aimOffset; }
     public float Knockback { get => _knockback; }
+    public float Angle { get => _angle; }
 
     public GameObject ProjectileObj { get => _projectileObj; }
 

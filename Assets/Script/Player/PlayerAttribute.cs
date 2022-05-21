@@ -88,6 +88,8 @@ public class PlayerAttribute : MonoBehaviour
     /// </summary>
     public void initialize()
     {
+        skillAttrs.Clear();
+
         maxHP = heroData.maxHP;
         hpRecovery = heroData.hpRecovery;
         movementSpd = heroData.movementSpd;
@@ -120,6 +122,8 @@ public class PlayerAttribute : MonoBehaviour
             skillAttrs[i].duration = sso.Duration;
             skillAttrs[i].distance = sso.Distance;
             skillAttrs[i].aimOffset = sso.AimOffset;
+            skillAttrs[i].knockback = sso.Knockback;
+            skillAttrs[i].angle = sso.Angle;
             skillAttrs[i].projectileObj = sso.ProjectileObj;
         }
     }
@@ -138,6 +142,8 @@ public class SkillAttrAfterUpdate
     public float duration;
     public float distance;
     public float aimOffset;
+    public float knockback;
+    public float angle;
     public GameObject projectileObj;
 }
 

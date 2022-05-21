@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d466456c9f5a16a45963f06ce5b505e5, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyType: 0
   maxHP: 100
-  damage: 5
+  damage: 12
   movementSpeed: 3.5
   cooldown: 0.5
   enemyImg: {fileID: 21300000, guid: 4767b1d2962005e4582e93a540e66085, type: 3}

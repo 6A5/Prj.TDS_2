@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierNormalBullet : BaseBullet
+public class SoldierSpecialBullet : BaseBullet
 {
     /// <summary>
     /// 技能資訊

@@ -24,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
     public void GotHit(float damage)
     {
         currentHP -= damage;
+        print(currentHP);
 
         if (currentHP <= 0)
         {
