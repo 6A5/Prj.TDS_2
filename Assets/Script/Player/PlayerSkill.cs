@@ -7,24 +7,6 @@ public class PlayerSkill : MonoBehaviour
 {
 
     /// <summary>
-    /// 普通子彈冷卻計時器
-    /// </summary>
-    float normalBullet_cooldown_last;
-    /// <summary>
-    /// 特殊子彈冷卻計時器
-    /// </summary>
-    float specialBullet_cooldown_last;
-
-    /// <summary>
-    /// 普通子彈生成點
-    /// </summary>
-    [SerializeField] Transform normalBullet_spawnPoint;
-    /// <summary>
-    /// 特殊子彈生成點
-    /// </summary>
-    [SerializeField] Transform specialBullet_spawnPoint;
-
-    /// <summary>
     /// 子彈生成點
     /// </summary>
     [SerializeField] Transform[] bulletSpawnPoint = new Transform[4];

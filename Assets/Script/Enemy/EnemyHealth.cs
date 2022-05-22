@@ -25,9 +25,8 @@ public class EnemyHealth : MonoBehaviour
     public void GotHit(float damage)
     {
         currentHP -= damage;
-        print(currentHP);
 
-        InfoCanvas.Instance.ShowDamageText(transform.position, damage);
+        InfoCanvas.Instance.ShowDamageText(transform.position, damage, Color.white);
 
         if (currentHP <= 0)
         {

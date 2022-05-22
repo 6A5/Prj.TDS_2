@@ -66,7 +66,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.gameObject != player || Time.time < lastAttackTime + enemyAttr.cooldown) { return; }
 
-        print("PLAYER HURT");
+        collision.gameObject.GetComponent<PlayerHealth>().GotHit(enemyAttr.damage);
 
         lastAttackTime = Time.time;
     }
