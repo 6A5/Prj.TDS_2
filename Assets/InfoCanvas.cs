@@ -47,7 +47,7 @@ public class InfoCanvas : MonoBehaviour
     /// <param name="color">ÃC¦â¦WºÙ</param>
     public void ShowDamageText(Vector3 pos, float damage, Color color)
     {
-        TextMeshProUGUI txt = Instantiate(damageText, pos, Quaternion.identity, transform);
+        TextMeshProUGUI txt = Instantiate(damageText, pos, Quaternion.identity, PoolList.Instance.damageTextPool);
         txt.text = damage.ToString();
         txt.color = color;
 

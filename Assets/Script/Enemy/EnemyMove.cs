@@ -123,7 +123,10 @@ public class EnemyMove : MonoBehaviour
     /// <returns>¶¡¹j®É¶¡</returns>
     IEnumerator UpdateDestination()
     {
-        agent.SetDestination(player.transform.position);
+        if (agent != null && agent.enabled)
+        {
+            agent.SetDestination(player.transform.position);
+        }
         yield return new WaitForSeconds(0.15f);
 
         StartCoroutine(UpdateDestination());

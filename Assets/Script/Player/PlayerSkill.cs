@@ -31,6 +31,7 @@ public class PlayerSkill : MonoBehaviour
     {
         NormalSkill();
         SpecialSkill();
+        ThrowableSkill();
     }
 
     private void NormalSkill()
@@ -61,6 +62,16 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
+    private void ThrowableSkill()
+    {
+        int index = 2;
+
+        if (Input.GetKey(KeyCode.Q) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        {
+            SpawnProjectile(index);
+        }
+    }
+
     private void SpawnProjectile(int index)
     {
         #region 計算公式筆記
@@ -85,7 +96,7 @@ public class PlayerSkill : MonoBehaviour
                 // 算式 >>> 原點<-90> + 左邊第一點<angle/2> - 第幾顆子彈<i> * 每格角度<step> + 偏移<offset>
                 Quaternion rotate = transform.rotation * Quaternion.Euler(new Vector3(0, 0, -90 + angle / 2 - i * step + offset)); // 角度
 
-                GameObject bullet = Instantiate(m_saau[index].projectileObj, bulletSpawnPoint[index].position, rotate);
+                GameObject bullet = Instantiate(m_saau[index].projectileObj, bulletSpawnPoint[index].position, rotate, PoolList.Instance.projectilesPool);
                 bullet.GetComponent<IProjectileSpawn>().SetProjectileAttr(index);
             }
         }
@@ -94,7 +105,7 @@ public class PlayerSkill : MonoBehaviour
             float offset = Random.Range(m_saau[index].aimOffset, -m_saau[index].aimOffset);
             Quaternion rotate = transform.rotation * Quaternion.Euler(new Vector3(0, 0, -90 + offset));
 
-            GameObject bullet = Instantiate(m_saau[index].projectileObj, bulletSpawnPoint[index].position, rotate);
+            GameObject bullet = Instantiate(m_saau[index].projectileObj, bulletSpawnPoint[index].position, rotate, PoolList.Instance.projectilesPool);
 
             bullet.GetComponent<IProjectileSpawn>().SetProjectileAttr(index);
         }
