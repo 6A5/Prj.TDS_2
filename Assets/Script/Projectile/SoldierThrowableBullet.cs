@@ -37,7 +37,7 @@ public class SoldierThrowableBullet : BaseBullet
         Hit();
         DestroyBullet();
 
-        print(Time.time);
+        // print(Time.time);
     }
 
     [SerializeField] Sprite explodeImage;
@@ -77,7 +77,7 @@ public class SoldierThrowableBullet : BaseBullet
     {
         if (isExploding && Time.time >= nextPulsingTime)
         {
-            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, b_scope);
+            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, b_scope, ~(1 << 3));
             for (int i = 0; i < targets.Length; i++)
             {
                 if (targets[i].gameObject != null && targets[i].gameObject.CompareTag("Enemy"))
@@ -89,9 +89,9 @@ public class SoldierThrowableBullet : BaseBullet
         }
         else
         {
-            if (!Physics2D.OverlapCircle(transform.position, colliderRange) || isExploding) { return; }
+            if (!Physics2D.OverlapCircle(transform.position, colliderRange, ~(1 << 3)) || isExploding) { return; }
 
-            Collider2D target = Physics2D.OverlapCircle(transform.position, colliderRange);
+            Collider2D target = Physics2D.OverlapCircle(transform.position, colliderRange, ~(1 << 3));
             if (target.gameObject.CompareTag("Enemy"))
             {
                 CreateExplodeArea();

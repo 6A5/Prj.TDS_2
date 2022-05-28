@@ -32,6 +32,7 @@ public class PlayerSkill : MonoBehaviour
         NormalSkill();
         SpecialSkill();
         ThrowableSkill();
+        UltSkill();
     }
 
     private void NormalSkill()
@@ -67,6 +68,16 @@ public class PlayerSkill : MonoBehaviour
         int index = 2;
 
         if (Input.GetKey(KeyCode.Q) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        {
+            SpawnProjectile(index);
+        }
+    }
+
+    private void UltSkill()
+    {
+        int index = 3;
+
+        if (Input.GetKey(KeyCode.R) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
         {
             SpawnProjectile(index);
         }

@@ -7,10 +7,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("ºÊ±±")]
     [SerializeField] private float currentHP;
 
-    private PlayerAttribute m_attr = PlayerAttribute.Instance;
+    private PlayerAttribute m_attr = null;
 
     private void Start()
     {
+        m_attr = PlayerAttribute.Instance;
         currentHP = m_attr.maxHP * m_attr.maxHP_p / .01f;
 
         StartCoroutine(RecoverHealthPoint());

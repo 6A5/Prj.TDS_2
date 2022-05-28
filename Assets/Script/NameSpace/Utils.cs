@@ -15,7 +15,7 @@ namespace NkE1.Utilities
         /// <param name="self">旋轉的物體</param>
         public static void RotateDirectionToTarget(Vector3 target, Transform self)
         {
-            float angle = GetAnglePointMousePosition(target, self.position);
+            float angle = GetAnglePointTargetPosition(target, self.position);
             self.eulerAngles = new Vector3(0, 0, angle);
         }
         /// <summary>
@@ -25,7 +25,7 @@ namespace NkE1.Utilities
         public static void RotateDirectionToMouse(Transform self)
         {
             Vector3 mouse = GetMouseWorldPosition();
-            float angle = GetAnglePointMousePosition(mouse, self.position);
+            float angle = GetAnglePointTargetPosition(mouse, self.position);
             self.eulerAngles = new Vector3(0, 0, angle);
         }
         /// <summary>
@@ -45,14 +45,37 @@ namespace NkE1.Utilities
         /// <param name="targetPos">目標物</param>
         /// <param name="playerPos">旋轉的物體</param>
         /// <returns>角度</returns>
-        public static float GetAnglePointMousePosition(Vector3 targetPos, Vector3 jointPos)
+        public static float GetAnglePointTargetPosition(Vector3 targetPos, Vector3 jointPos)
         {
             Vector3 dir = (targetPos - jointPos).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             return angle;
         }
         /// <summary>
-        /// 滑鼠位置轉換
+        /// 取得旋轉到滑鼠的角度
+        /// </summary>
+        /// <param name="jointPos">旋轉物體</param>
+        /// <returns></returns>
+        public static float GetAnglePointMousePosition(Vector3 jointPos)
+        {
+            Vector3 mouse = GetMouseWorldPosition();
+            Vector3 dir = (mouse - jointPos).normalized;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            return angle;
+        }
+        /// <summary>
+        /// 取得旋轉物轉向至滑鼠方位的單位向量
+        /// </summary>
+        /// <param name="jointPos">旋轉物體</param>
+        /// <returns>轉向滑鼠的單位向量</returns>
+        public static Vector3 GetTargetPointMouseUnit(Vector3 jointPos)
+        {
+            Vector3 mouse = GetMouseWorldPosition();
+            Vector3 dir = (mouse - jointPos).normalized;
+            return dir;
+        }
+        /// <summary>
+        /// 取得滑鼠在世界座標的位置
         /// </summary>
         /// <returns>滑鼠位置</returns>
         public static Vector3 GetMouseWorldPosition()
@@ -61,8 +84,8 @@ namespace NkE1.Utilities
             vec.z = 0;
             return vec;
         }
-        
-        #endregion
 
+
+        #endregion
     }
 }

@@ -56,9 +56,9 @@ public class SoldierSpecialBullet : BaseBullet
     /// </summary>
     override protected void Hit()
     {
-        if (!Physics2D.OverlapCircle(transform.position, colliderRange)) { return; }
+        if (!Physics2D.OverlapCircle(transform.position, colliderRange, ~(1 << 3))) { return; }
 
-        Collider2D target = Physics2D.OverlapCircle(transform.position, colliderRange);
+        Collider2D target = Physics2D.OverlapCircle(transform.position, colliderRange, ~(1 << 3));
         if (target.gameObject.CompareTag("Enemy"))
         {
             target.GetComponent<EnemyHealth>().GotHit(b_damage);
