@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyType: 1
   maxHP: 25
   damage: 16
-  movementSpeed: 5
+  movementSpeed: 4.2
   cooldown: 0.5
   enemyImg: {fileID: 21300000, guid: 3795195086c97e748ad5e9467d12ba54, type: 3}
   colliderSize: 0.6

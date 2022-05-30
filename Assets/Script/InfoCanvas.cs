@@ -55,6 +55,6 @@ public class InfoCanvas : MonoBehaviour
         txt.gameObject.transform.DOJump(txt.gameObject.transform.position + new Vector3(x, jumpHeight, 0), 1, 1, jumpTime);
         txt.gameObject.transform.DOScale(Vector3.one * 2f, jumpTime);
 
-        Destroy(txt.gameObject, jumpTime+0.05f);
+        Destroy(txt.gameObject, jumpTime + 0.1f);
     }
 }

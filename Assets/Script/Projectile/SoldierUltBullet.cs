@@ -124,7 +124,7 @@ public class SoldierUltBullet : BaseBullet
             {
                 // ¤¤¶¡ÂI
                 Vector3 midPos = (originPos + player.transform.right * b_distance * 0.5f);
-                print(midPos);
+                // print(midPos);
 
                 Collider2D[] col = Physics2D.OverlapBoxAll(midPos, b_distance * Vector2.right + b_scope * Vector2.up, angle, ~(1 << 3));
                 for (int i = 0; i < col.Length; i++)

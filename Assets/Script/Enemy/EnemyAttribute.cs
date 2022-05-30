@@ -50,4 +50,9 @@ public class EnemyAttribute : MonoBehaviour
         damage *= damageMultiple;
         movementSpeed *= movementMultiple;
     }
+
+    public void SetEnemyData(EnemyScriptObject a)
+    {
+        enemyData = a;
+    }
 }

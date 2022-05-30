@@ -30,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            WaveControl.Instance.DeleteOnEnemyList(this.gameObject);
             Destroy(gameObject);
         }
     }
