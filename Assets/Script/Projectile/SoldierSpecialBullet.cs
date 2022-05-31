@@ -13,6 +13,7 @@ public class SoldierSpecialBullet : BaseBullet
     float b_speed = 0;
     float b_distance = 99;
     float b_damage = 0;
+    float b_knockback = 0;
 
     /// <summary>
     /// ¥X¥ÍÂI
@@ -62,6 +63,7 @@ public class SoldierSpecialBullet : BaseBullet
         if (target.gameObject.CompareTag("Enemy"))
         {
             target.GetComponent<EnemyHealth>().GotHit(b_damage);
+            target.GetComponent<EnemyHealth>().HitBack(b_knockback);
             Destroy(this.gameObject);
         }
         else if (target.gameObject.CompareTag("Wall"))
@@ -83,6 +85,7 @@ public class SoldierSpecialBullet : BaseBullet
         b_damage = m_saau.damage;
         b_speed = m_saau.projectileSpeed;
         b_distance = m_saau.distance;
+        b_knockback = m_saau.knockback;
     }
     #endregion
 

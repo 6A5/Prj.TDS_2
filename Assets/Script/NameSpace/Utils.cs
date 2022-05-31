@@ -68,10 +68,22 @@ namespace NkE1.Utilities
         /// </summary>
         /// <param name="jointPos">旋轉物體</param>
         /// <returns>轉向滑鼠的單位向量</returns>
-        public static Vector3 GetTargetPointMouseUnit(Vector3 jointPos)
+        public static Vector3 GetJointPointMouseUnit(Vector3 jointPos)
         {
             Vector3 mouse = GetMouseWorldPosition();
             Vector3 dir = (mouse - jointPos).normalized;
+            return dir;
+        }
+
+        /// <summary>
+        /// 取得旋轉物轉向至目標方位的單位向量
+        /// </summary>
+        /// <param name="targetPos">目標</param>
+        /// <param name="jointPos">旋轉物</param>
+        /// <returns></returns>
+        public static Vector3 GetJointPointTargetUnit(Vector3 targetPos, Vector3 jointPos)
+        {
+            Vector3 dir = (targetPos - jointPos).normalized;
             return dir;
         }
         /// <summary>

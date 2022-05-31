@@ -49,7 +49,7 @@ public class SoldierUltBullet : BaseBullet
     /// </summary>
     protected override void UpdateTransform()
     {
-        Vector3 p2mUnitVector = Utils.GetTargetPointMouseUnit(player.transform.position); // 轉到滑鼠的單位向量
+        Vector3 p2mUnitVector = Utils.GetJointPointMouseUnit(player.transform.position); // 轉到滑鼠的單位向量
         ray = Physics2D.Raycast(player.transform.position, p2mUnitVector, b_distance, ~(1 << 2 | 1 << 3));
         Debug.DrawRay(player.transform.position, p2mUnitVector * b_distance, Color.red);
 

@@ -33,6 +33,14 @@ public class PlayerSkill : MonoBehaviour
         SpecialSkill();
         ThrowableSkill();
         UltSkill();
+        UpdateSkillCooldownUI();
+    }
+
+    private void UpdateSkillCooldownUI()
+    {
+        InfoCanvas.Instance.spSkill.fillAmount = ((Time.time - bulletCooldownLast[1]) / m_saau[1].cooldown);
+        InfoCanvas.Instance.throwSkill.fillAmount = ((Time.time - bulletCooldownLast[2]) / m_saau[2].cooldown);
+        InfoCanvas.Instance.ultSkill.fillAmount = ((Time.time - bulletCooldownLast[3]) / m_saau[3].cooldown);
     }
 
     private void NormalSkill()

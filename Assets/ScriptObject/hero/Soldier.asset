@@ -24,7 +24,7 @@ MonoBehaviour:
   _duration: 0
   _distance: 15
   _aimOffset: 7
-  _knockback: 0
+  _knockback: 1
   _angle: 10
   _projectileObj: {fileID: 7871888052990280968, guid: aff1a8b4aa1280741a762a6d29b4a6d2, type: 3}
 --- !u!114 &11400000
@@ -83,7 +83,7 @@ MonoBehaviour:
   _duration: 0
   _distance: 30
   _aimOffset: 0
-  _knockback: 0
+  _knockback: 5
   _angle: 60
   _projectileObj: {fileID: 5239165179286535748, guid: 554e428b351c2f844b13fffed29990a8, type: 3}
 --- !u!114 &4641623288879620140
@@ -130,7 +130,7 @@ MonoBehaviour:
   _damage: 5
   _projectileSpeed: 0
   _projectileCount: 1
-  _cooldown: 1
+  _cooldown: 15
   _leadTime: 10
   _pulsingTime: 0.1
   _scope: 2

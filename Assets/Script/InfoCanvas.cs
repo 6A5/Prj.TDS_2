@@ -9,14 +9,20 @@ public class InfoCanvas : MonoBehaviour
 {
     [SerializeField] float jumpTime; // 文字漂浮時間
     [SerializeField] float jumpHeight; // 文字漂浮高度
-    [SerializeField] float playerHpDist; // 角色血量距離 
+    [SerializeField] float playerInfoDist; // 角色血量距離 
 
     private static InfoCanvas _instance = null;
 
     [SerializeField] TextMeshProUGUI damageText;
     [SerializeField] GameObject player;
 
+    public Transform playerInfo;
+    // 血條圖
     public Image hpBar;
+    // 技能CD圖
+    public Image spSkill;
+    public Image throwSkill;
+    public Image ultSkill;
 
 
     public static InfoCanvas Instance
@@ -36,7 +42,7 @@ public class InfoCanvas : MonoBehaviour
 
     private void Update()
     {
-        hpBar.transform.parent.transform.position = player.transform.position + new Vector3(0, playerHpDist, 0);
+        playerInfo.position = player.transform.position + new Vector3(0, playerInfoDist, 0);
     }
 
     /// <summary>

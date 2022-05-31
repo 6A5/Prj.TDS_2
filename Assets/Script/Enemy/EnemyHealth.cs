@@ -1,3 +1,4 @@
+using NkE1.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -33,5 +34,17 @@ public class EnemyHealth : MonoBehaviour
             WaveControl.Instance.DeleteOnEnemyList(this.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>
+    /// À»°h
+    /// </summary>
+    /// <param name="backForce">À»°h°Ñ¼Æ</param>
+    public void HitBack(float backForce)
+    {
+        Transform playerTrans = PlayerAttribute.Instance.gameObject.transform;
+
+        Vector2 vectorUnit = Utils.GetJointPointTargetUnit(playerTrans.position, transform.position);
+        transform.Translate(vectorUnit * -1 * 0.1f * backForce, Space.World);
     }
 }
