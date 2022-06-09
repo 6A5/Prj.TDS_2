@@ -105,7 +105,7 @@ public class EnemyMove : MonoBehaviour
             agent.updateUpAxis = false;
 
             agent.speed = enemyAttr.movementSpeed;
-            print(enemyAttr.movementSpeed);
+            // print(enemyAttr.movementSpeed);
 
             StartCoroutine(UpdateDestination());
         }

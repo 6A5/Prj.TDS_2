@@ -29,10 +29,14 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        NormalSkill();
-        SpecialSkill();
-        ThrowableSkill();
-        UltSkill();
+        if (!GameMenuControl.Instance.gamePause)
+        {
+            NormalSkill();
+            SpecialSkill();
+            ThrowableSkill();
+            UltSkill();
+        }
+
         UpdateSkillCooldownUI();
     }
 
