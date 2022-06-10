@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SoldierThrowableBullet : BaseBullet
 {
@@ -133,6 +134,7 @@ public class SoldierThrowableBullet : BaseBullet
 
     private void CreateExplodeArea()
     {
+        Destroy(gameObject.GetComponent<Light2D>());
         SpriteRenderer m_spr = GetComponent<SpriteRenderer>();
         m_spr.sprite = explodeImage;
         m_spr.color = new Color32(35, 168, 192, 50);

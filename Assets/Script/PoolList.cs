@@ -22,6 +22,10 @@ public class PoolList : MonoBehaviour
     /// ¤l¼u¦À
     /// </summary>
     public Transform projectilesPool;
+    /// <summary>
+    /// ¯S®Ä¦À
+    /// </summary>
+    public Transform vfxPool;
 
     private void Awake()
     {

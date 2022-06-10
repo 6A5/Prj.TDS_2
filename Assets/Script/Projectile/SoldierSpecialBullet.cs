@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class SoldierSpecialBullet : BaseBullet
 {
@@ -21,6 +22,7 @@ public class SoldierSpecialBullet : BaseBullet
     Vector3 spawnPoint;
 
     [SerializeField] float colliderRange = 1f;
+    [SerializeField] GameObject hitVFX;
 
     private void Start()
     {
@@ -64,6 +66,8 @@ public class SoldierSpecialBullet : BaseBullet
         {
             target.GetComponent<EnemyHealth>().GotHit(b_damage);
             target.GetComponent<EnemyHealth>().HitBack(b_knockback);
+            GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity, PoolList.Instance.vfxPool);
+            Destroy(vfx, vfx.GetComponent<VisualEffect>().GetFloat(Shader.PropertyToID("Duration")));
             Destroy(this.gameObject);
         }
         else if (target.gameObject.CompareTag("Wall"))
