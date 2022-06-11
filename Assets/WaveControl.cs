@@ -44,24 +44,45 @@ public class WaveControl : MonoBehaviour
     [SerializeField, Header("UI")]
     private TextMeshProUGUI tmpWaveInfo;
 
+    private bool allClear = false;
+
+    [Header("玩家死亡")]
+    public bool isPlayerDead = false;
+
     private void Awake()
     {
         _instance = this;
 
         GetAllSpawnPoint();
+
+        allClear = false;
+        isPlayerDead = false;
     }
     private void Start()
     {
         UpdateWaveInfo();
+        StartCoroutine(StartWave());
     }
     private void Update()
     {
         UpdateWave();
 
+        /*
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            waveStart = true;
+            StartCoroutine(StartWave());
         }
+        */
+    }
+
+    /// <summary>
+    /// 開始波數
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator StartWave()
+    {
+        yield return new WaitForSeconds(3f);
+        waveStart = true;
     }
 
     private void UpdateWaveInfo()
@@ -122,11 +143,20 @@ public class WaveControl : MonoBehaviour
 
     private void UpdateWave()
     {
-        if (CheckWaveClear() && currentWave < maxWave)
+
+        if (!CheckWaveClear()) return;
+
+        if (currentWave < maxWave)
         {
             SpawnWaveEnemy();
             currentWave++;
             UpdateWaveInfo();
+        }
+
+        if (currentWave == maxWave && !allClear && enemyInScene.Count == 0)
+        {
+            allClear = true;
+            GameMenuControl.Instance.EndGame(true);
         }
     }
 

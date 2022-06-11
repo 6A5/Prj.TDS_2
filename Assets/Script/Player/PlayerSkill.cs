@@ -29,7 +29,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (!GameMenuControl.Instance.gamePause)
+        if (!GameMenuControl.Instance.gamePause && !WaveControl.Instance.isPlayerDead)
         {
             NormalSkill();
             SpecialSkill();

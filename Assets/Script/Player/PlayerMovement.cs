@@ -21,14 +21,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-
-        Utils.RotateDirectionToMouse(transform);
+        InputAxis();
     }
 
     private void FixedUpdate()
     {
         rb2d.MovePosition(rb2d.position + movement * movementSpd * Time.deltaTime);
+    }
+
+    private void InputAxis()
+    {
+        if (WaveControl.Instance.isPlayerDead) return;
+
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+
+        Utils.RotateDirectionToMouse(transform);
     }
 }

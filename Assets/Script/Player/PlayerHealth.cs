@@ -25,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            
+            WaveControl.Instance.isPlayerDead = true;
+            GameMenuControl.Instance.EndGame(false);
         }
     }
 

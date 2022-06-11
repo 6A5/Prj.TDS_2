@@ -24,6 +24,10 @@ public class SoldierThrowableBullet : BaseBullet
     Vector3 spawnPoint;
 
     [SerializeField] float colliderRange = 1f;
+    /// <summary>
+    /// µo¥úshader
+    /// </summary>
+    [SerializeField] Material circleMat;
 
     bool isExploding = false;
 
@@ -136,6 +140,7 @@ public class SoldierThrowableBullet : BaseBullet
     {
         Destroy(gameObject.GetComponent<Light2D>());
         SpriteRenderer m_spr = GetComponent<SpriteRenderer>();
+        m_spr.material = circleMat;
         m_spr.sprite = explodeImage;
         m_spr.color = new Color32(35, 168, 192, 50);
         m_spr.transform.localScale = Vector3.one * b_scope;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameMenuControl : MonoBehaviour
@@ -16,12 +17,16 @@ public class GameMenuControl : MonoBehaviour
 
     [SerializeField] private KeyCode menuKey;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject endGameUI;
 
     public bool gamePause = false;
+
 
     private void Awake()
     {
         _instance = this;
+
+        gamePause = false;
     }
 
     private void Update()
@@ -51,5 +56,19 @@ public class GameMenuControl : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         gamePause = false;
+    }
+
+    public void EndGame(bool isClear)
+    {
+        if (isClear)
+        {
+            endGameUI.SetActive(true);
+            endGameUI.GetComponentInChildren<TextMeshProUGUI>().text = "Clear";
+        }
+        else
+        {
+            endGameUI.SetActive(true);
+            endGameUI.GetComponentInChildren<TextMeshProUGUI>().text = "Fail";
+        }
     }
 }
