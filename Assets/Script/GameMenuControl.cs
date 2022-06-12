@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMenuControl : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameMenuControl : MonoBehaviour
     [SerializeField] private KeyCode menuKey;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGameUI;
+    [SerializeField] private SceneControl sc;
+    [SerializeField] private Button btnTitle;
+    [SerializeField] private Button btnQuit;
 
     public bool gamePause = false;
 
@@ -27,6 +31,20 @@ public class GameMenuControl : MonoBehaviour
         _instance = this;
 
         gamePause = false;
+    }
+
+    private void Start()
+    {
+        try
+        {
+            sc = GameObject.Find("SceneManager").GetComponent<SceneControl>();
+            InitializePauseMenuButton();
+        }
+        catch (System.Exception)
+        {
+            print("請從主選單開始遊戲，如果需要暫停選單功能。");
+            print("沒有抓到SC");
+        }
     }
 
     private void Update()
@@ -70,5 +88,24 @@ public class GameMenuControl : MonoBehaviour
             endGameUI.SetActive(true);
             endGameUI.GetComponentInChildren<TextMeshProUGUI>().text = "Fail";
         }
+    }
+
+    /// <summary>
+    /// 初始化按鈕
+    /// </summary>
+    private void InitializePauseMenuButton() 
+    {
+        btnTitle.onClick.AddListener(BackToTitle);
+        btnQuit.onClick.AddListener(QuitGame);
+    }
+
+    private void BackToTitle() 
+    {
+        sc.ChangeScene("GameTitle");
+    }
+
+    private void QuitGame() 
+    {
+        Application.Quit();
     }
 }

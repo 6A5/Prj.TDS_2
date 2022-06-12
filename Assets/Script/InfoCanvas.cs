@@ -58,9 +58,14 @@ public class InfoCanvas : MonoBehaviour
         txt.color = color;
 
         float x = Random.Range(-.5f, .5f);
-        txt.gameObject.transform.DOJump(txt.gameObject.transform.position + new Vector3(x, jumpHeight, 0), 1, 1, jumpTime);
-        txt.gameObject.transform.DOScale(Vector3.one * 2f, jumpTime);
+        txt.gameObject.transform.DOJump(txt.gameObject.transform.position + new Vector3(x, jumpHeight, 0), 1, 1, jumpTime - 0.01f);
+        txt.gameObject.transform.DOScale(Vector3.one * 2f, jumpTime).OnComplete(() => DestroyText(txt));
 
-        Destroy(txt.gameObject, jumpTime + 0.1f);
     }
+
+    private void DestroyText(TextMeshProUGUI txt) 
+    {
+        Destroy(txt.gameObject);
+    }
+
 }
