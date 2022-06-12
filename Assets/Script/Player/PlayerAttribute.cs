@@ -147,6 +147,7 @@ public class SkillAttrAfterUpdate
     public GameObject projectileObj;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlayerAttribute))]
 public class SOTestingButton : Editor
 {
@@ -162,3 +163,4 @@ public class SOTestingButton : Editor
         }
     }
 }
+#endif
