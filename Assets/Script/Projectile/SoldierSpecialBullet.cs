@@ -10,6 +10,8 @@ public class SoldierSpecialBullet : BaseBullet
     /// </summary>
     SkillAttrAfterUpdate m_saau;
 
+    PlayerAttribute m_attr;
+
     //¤l¼u¼Æ­È
     float b_speed = 0;
     float b_distance = 99;
@@ -85,8 +87,9 @@ public class SoldierSpecialBullet : BaseBullet
     override public void SetProjectileAttr(int skillIndex)
     {
         m_saau = PlayerAttribute.Instance.skillAttrs[skillIndex];
+        m_attr = PlayerAttribute.Instance;
 
-        b_damage = m_saau.damage;
+        b_damage = m_saau.damage * m_attr.damage_p * 0.01f;
         b_speed = m_saau.projectileSpeed;
         b_distance = m_saau.distance;
         b_knockback = m_saau.knockback;

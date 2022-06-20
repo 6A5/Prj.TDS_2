@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
+        // ªì©l¤Æ
         currentHP = enemyAttr.maxHP;
     }
 
@@ -32,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHP <= 0)
         {
             WaveControl.Instance.DeleteOnEnemyList(this.gameObject);
+            PlayerItem.Instance.AddCoin((int)Random.Range(enemyAttr.coinDropRange.x, enemyAttr.coinDropRange.y));
             Destroy(gameObject);
         }
     }

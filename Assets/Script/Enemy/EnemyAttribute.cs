@@ -16,6 +16,8 @@ public class EnemyAttribute : MonoBehaviour
     public float movementSpeed;
     [SerializeField, Tooltip("§N«o")]
     public float cooldown;
+    [SerializeField, Tooltip("ª÷¿ú±¼¸¨½d³ò")]
+    public Vector2 coinDropRange;
 
     private CircleCollider2D m_Col;
     private SpriteRenderer m_SprRend;
@@ -34,6 +36,7 @@ public class EnemyAttribute : MonoBehaviour
         damage = enemyData.damage;
         movementSpeed = enemyData.movementSpeed;
         cooldown = enemyData.cooldown;
+        coinDropRange = enemyData.coinDropRange;
         #endregion
     }
 

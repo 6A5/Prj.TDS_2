@@ -21,7 +21,10 @@ public class EnemyScriptObject : ScriptableObject
     public float movementSpeed;
     [SerializeField, Tooltip("冷卻")]
     public float cooldown;
+    [SerializeField, Tooltip("金錢掉落範圍")]
+    public Vector2 coinDropRange;
     
+    [Space(20)]
     [SerializeField, Tooltip("圖片")]
     public Sprite enemyImg;
     [SerializeField, Tooltip("碰撞大小")]

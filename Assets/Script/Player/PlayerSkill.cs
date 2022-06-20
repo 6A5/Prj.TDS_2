@@ -22,8 +22,11 @@ public class PlayerSkill : MonoBehaviour
     /// </summary>
     List<SkillAttrAfterUpdate> m_saau;
 
+    PlayerAttribute m_attr;
+
     private void Start()
     {
+        m_attr = PlayerAttribute.Instance;
         m_saau = PlayerAttribute.Instance.skillAttrs;
     }
 
@@ -42,26 +45,18 @@ public class PlayerSkill : MonoBehaviour
 
     private void UpdateSkillCooldownUI()
     {
-        InfoCanvas.Instance.spSkill.fillAmount = ((Time.time - bulletCooldownLast[1]) / m_saau[1].cooldown);
-        InfoCanvas.Instance.throwSkill.fillAmount = ((Time.time - bulletCooldownLast[2]) / m_saau[2].cooldown);
-        InfoCanvas.Instance.ultSkill.fillAmount = ((Time.time - bulletCooldownLast[3]) / m_saau[3].cooldown);
+        InfoCanvas.Instance.spSkill.fillAmount = ((Time.time - bulletCooldownLast[1]) / m_saau[1].cooldown * m_attr.cooldown_p * 0.01f);
+        InfoCanvas.Instance.throwSkill.fillAmount = ((Time.time - bulletCooldownLast[2]) / m_saau[2].cooldown * m_attr.cooldown_p * 0.01f);
+        InfoCanvas.Instance.ultSkill.fillAmount = ((Time.time - bulletCooldownLast[3]) / m_saau[3].cooldown * m_attr.cooldown_p * 0.01f);
     }
 
     private void NormalSkill()
     {
         int index = 0;
 
-        if (Input.GetMouseButton(0) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        if (Input.GetMouseButton(0) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
             SpawnProjectile(index);
-            // float offset = Random.Range(m_saau[index].aimOffset, -m_saau[index].aimOffset);
-            // Quaternion rotate = transform.rotation * Quaternion.Euler(new Vector3(0, 0, -90 + offset));
-            // 
-            // GameObject bullet1 = Instantiate(m_saau[index].projectileObj, bulletSpawnPoint[index].position, rotate);
-            // 
-            // bullet1.GetComponent<IProjectileSpawn>().SetProjectileAttr(index);
-            // 
-            // normalBullet_cooldown_last = Time.time;
         }
     }
 
@@ -69,7 +64,7 @@ public class PlayerSkill : MonoBehaviour
     {
         int index = 1;
 
-        if (Input.GetMouseButton(1) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        if (Input.GetMouseButton(1) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
             SpawnProjectile(index);
         }
@@ -79,7 +74,7 @@ public class PlayerSkill : MonoBehaviour
     {
         int index = 2;
 
-        if (Input.GetKey(KeyCode.Q) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        if (Input.GetKey(KeyCode.Q) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
             SpawnProjectile(index);
         }
@@ -89,7 +84,7 @@ public class PlayerSkill : MonoBehaviour
     {
         int index = 3;
 
-        if (Input.GetKey(KeyCode.R) && bulletCooldownLast[index] + m_saau[index].cooldown < Time.time)
+        if (Input.GetKey(KeyCode.R) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
             SpawnProjectile(index);
         }
@@ -108,7 +103,7 @@ public class PlayerSkill : MonoBehaviour
          */
         #endregion
 
-        float count = m_saau[index].projectileCount; // 子彈數量
+        float count = m_saau[index].projectileCount + m_attr.extraProjectile; // 子彈數量
         float angle = m_saau[index].angle; // 擴散角度
         if (count > 1) // 單發多顆
         {

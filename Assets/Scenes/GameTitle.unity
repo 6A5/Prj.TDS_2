@@ -988,19 +988,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 264302394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 197781238}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: CloseMenu
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1385941183}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &264302394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,19 +1461,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 724656768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 197781238}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: OpenMenu
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1803992809}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &724656768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2382,19 +2358,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1203123048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 197781238}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: OpenMenu
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1385941183}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1203123048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3134,19 +3098,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1411887947}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 197781238}
-        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GameTesting
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1411887947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3980,19 +3932,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1715462427}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 197781238}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: CloseMenu
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1803992809}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1715462427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4770,6 +4710,7 @@ GameObject:
   - component: {fileID: 2074216819}
   - component: {fileID: 2074216818}
   - component: {fileID: 2074216817}
+  - component: {fileID: 2074216821}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4861,3 +4802,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2074216821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074216816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308ec68b11d216a419b827c8996e9b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnStartGame: {fileID: 1203123047}
+  btnCharOk: {fileID: 724656767}
+  btnCharNo: {fileID: 264302393}
+  btnStaOk: {fileID: 1411887946}
+  btnStaNo: {fileID: 1715462426}
+  menuCharacter: {fileID: 1385941183}
+  menuStage: {fileID: 1803992809}

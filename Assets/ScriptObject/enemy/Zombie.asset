@@ -17,5 +17,6 @@ MonoBehaviour:
   damage: 12
   movementSpeed: 4
   cooldown: 0.4
+  coinDropRange: {x: 5, y: 8}
   enemyImg: {fileID: 21300000, guid: 4767b1d2962005e4582e93a540e66085, type: 3}
   colliderSize: 0.55

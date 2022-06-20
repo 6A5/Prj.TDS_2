@@ -12,14 +12,15 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         m_attr = PlayerAttribute.Instance;
-        currentHP = m_attr.maxHP * m_attr.maxHP_p / .01f;
+        // ªì©l¤Æ
+        currentHP = m_attr.maxHP * m_attr.maxHP_p * .01f;
 
         StartCoroutine(RecoverHealthPoint());
     }
 
     public void GotHit(float damage)
     {
-        currentHP -= damage;
+        currentHP -= (damage - m_attr.defense);
         InfoCanvas.Instance.ShowDamageText(transform.position, damage, Color.red);
         UpdateHPBar();
 

@@ -38,4 +38,21 @@ public class PlayerMovement : MonoBehaviour
 
         Utils.RotateDirectionToMouse(transform);
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.name == "ShopTrigger")
+        {
+            InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", true);
+            print("A");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.name == "ShopTrigger")
+        {
+            InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", false);
+        }
+    }
 }

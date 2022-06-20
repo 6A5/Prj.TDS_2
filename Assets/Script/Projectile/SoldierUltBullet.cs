@@ -8,7 +8,9 @@ public class SoldierUltBullet : BaseBullet
     /// <summary>
     /// 技能資訊
     /// </summary>
-    [SerializeField] SkillAttrAfterUpdate m_saau;
+    SkillAttrAfterUpdate m_saau;
+
+    PlayerAttribute m_attr;
 
     //子彈數值
     float b_distance = 10;
@@ -152,13 +154,14 @@ public class SoldierUltBullet : BaseBullet
     override public void SetProjectileAttr(int skillIndex)
     {
         m_saau = PlayerAttribute.Instance.skillAttrs[skillIndex];
+        m_attr = PlayerAttribute.Instance;
 
-        b_damage = m_saau.damage;
+        b_damage = m_saau.damage * m_attr.damage_p * 0.01f;
         b_distance = m_saau.distance;
-        b_duration = m_saau.duration;
+        b_duration = m_saau.duration * m_attr.duration_p * 0.01f;
         b_leadTime = m_saau.leadTime;
         b_pulsingTime = m_saau.pulsingTime;
-        b_scope = m_saau.scope;
+        b_scope = m_saau.scope * m_attr.scope_p * 0.01f;
     }
     #endregion
 

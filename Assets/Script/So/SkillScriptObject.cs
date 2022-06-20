@@ -13,10 +13,12 @@ public class SkillScriptObject : ScriptableObject
     [SerializeField, Tooltip("英雄")]
     private HeroScriptObject _myHSO;
 
+    [Space(15)]
     // 技能名稱
     [SerializeField, Tooltip("名稱")]
     private string _name;
 
+    [Space(15)]
     // 技能屬性
     [SerializeField, Tooltip("傷害")] 
     private float _damage;          
@@ -43,6 +45,7 @@ public class SkillScriptObject : ScriptableObject
     [SerializeField, Tooltip("角度")]
     private float _angle;
 
+    [Space(15)]
     // 技能物件
     [SerializeField, Tooltip("子彈Prefab")] private GameObject _projectileObj; // 子彈Prefab
 

@@ -30,7 +30,7 @@ public class WaveControl : MonoBehaviour
     [SerializeField, Header("怪物SO, 編號為順序")]
     private EnemyScriptObject[] enemyData;
 
-    [SerializeField, Header("怪物在場景數量")]
+    // [SerializeField, Header("怪物在場景數量")]
     private List<GameObject> enemyInScene = new List<GameObject>();
 
     [SerializeField, Header("怪物波數強化資訊")]
@@ -118,6 +118,7 @@ public class WaveControl : MonoBehaviour
                 Vector3 randomOffset = new Vector2(Random.Range(0, 1), Random.Range(0, 1));
                 GameObject enemy = Instantiate(enemyTemp, enemySpawnPoint[randomPos].position + randomOffset * 1.5f, Quaternion.identity);
                 enemy.GetComponent<EnemyAttribute>().SetEnemyData(enemyData[i]);
+                enemy.GetComponent<EnemyAttribute>().SetDiffcultyBonus(bonusInfo[i].hpBonus, bonusInfo[i].damageBonus, bonusInfo[i].moveBonus);
                 enemy.name = currentWave + "-" + i + "-" + c + "- Enemy";
                 enemy.SetActive(true);
 
