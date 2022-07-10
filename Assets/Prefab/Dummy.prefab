@@ -129,6 +129,7 @@ MonoBehaviour:
   damage: 0
   movementSpeed: 0
   cooldown: 0
+  coinDropRange: {x: 0, y: 0}
 --- !u!114 &7876095087453910393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd39ec9bd427a04c90ad0d9380ac22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMat: {fileID: 2100000, guid: 5646f368f27bf384c80f8d00e109fb44, type: 2}
 --- !u!114 &7876095087453910386
 MonoBehaviour:
   m_ObjectHideFlags: 0

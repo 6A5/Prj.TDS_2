@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public Material enemyMat;
+
     private EnemyAttribute enemyAttr;
     private float currentHP;
+    private SpriteRenderer m_spr;
 
     private void Awake()
     {
@@ -18,6 +21,9 @@ public class EnemyHealth : MonoBehaviour
     {
         // ªì©l¤Æ
         currentHP = enemyAttr.maxHP;
+        m_spr = GetComponent<SpriteRenderer>();
+        m_spr.material = new Material(enemyMat);
+
     }
 
     /// <summary>
@@ -27,8 +33,9 @@ public class EnemyHealth : MonoBehaviour
     public void GotHit(float damage)
     {
         currentHP -= damage;
-
-        InfoCanvas.Instance.ShowDamageText(transform.position, damage, Color.white);
+        var showDamage = Utils.RoundToDecimalPlaces(damage, 2);
+        InfoCanvas.Instance.ShowDamageText(transform.position, showDamage, Color.white);
+        StartCoroutine(ShowGotHitEffect());
 
         if (currentHP <= 0)
         {
@@ -48,5 +55,12 @@ public class EnemyHealth : MonoBehaviour
 
         Vector2 vectorUnit = Utils.GetJointPointTargetUnit(playerTrans.position, transform.position);
         transform.Translate(vectorUnit * -1 * 0.1f * backForce, Space.World);
+    }
+
+    IEnumerator ShowGotHitEffect()
+    {
+        m_spr.material.SetFloat(Shader.PropertyToID("_Power"), 1.5f);
+        yield return new WaitForSeconds(0.05f);
+        m_spr.material.SetFloat(Shader.PropertyToID("_Power"), 0);
     }
 }

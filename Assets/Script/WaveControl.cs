@@ -14,6 +14,8 @@ public class WaveControl : MonoBehaviour
         }
     }
 
+    private PlayerSkill playerSkill;
+
     [SerializeField, Header("遊戲模式")]
     private int gameMode = 0; // 0: Survive 1: Defence
 
@@ -49,6 +51,7 @@ public class WaveControl : MonoBehaviour
     [Header("玩家死亡")]
     public bool isPlayerDead = false;
 
+
     private void Awake()
     {
         _instance = this;
@@ -62,6 +65,8 @@ public class WaveControl : MonoBehaviour
     {
         UpdateWaveInfo();
         StartCoroutine(StartWave());
+
+        playerSkill = GameObject.Find("Player").GetComponent<PlayerSkill>();
     }
     private void Update()
     {
@@ -118,7 +123,7 @@ public class WaveControl : MonoBehaviour
                 Vector3 randomOffset = new Vector2(Random.Range(0, 1), Random.Range(0, 1));
                 GameObject enemy = Instantiate(enemyTemp, enemySpawnPoint[randomPos].position + randomOffset * 1.5f, Quaternion.identity);
                 enemy.GetComponent<EnemyAttribute>().SetEnemyData(enemyData[i]);
-                enemy.GetComponent<EnemyAttribute>().SetDiffcultyBonus(bonusInfo[i].hpBonus, bonusInfo[i].damageBonus, bonusInfo[i].moveBonus);
+                enemy.GetComponent<EnemyAttribute>().InitialEnemyAttr(bonusInfo[i].hpBonus, bonusInfo[i].damageBonus, bonusInfo[i].moveBonus);
                 enemy.name = currentWave + "-" + i + "-" + c + "- Enemy";
                 enemy.SetActive(true);
 
@@ -149,9 +154,7 @@ public class WaveControl : MonoBehaviour
 
         if (currentWave < maxWave)
         {
-            SpawnWaveEnemy();
-            currentWave++;
-            UpdateWaveInfo();
+            Invoke("UpdateWaveInvoke", 3f);
         }
 
         if (currentWave == maxWave && !allClear && enemyInScene.Count == 0)
@@ -159,6 +162,14 @@ public class WaveControl : MonoBehaviour
             allClear = true;
             GameMenuControl.Instance.EndGame(true);
         }
+    }
+
+    private void UpdateWaveInvoke()
+    {
+        SpawnWaveEnemy();
+        currentWave++;
+        UpdateWaveInfo();
+        OpenSkill();
     }
 
     /// <summary>
@@ -173,6 +184,12 @@ public class WaveControl : MonoBehaviour
         }
     }
 
+    void OpenSkill()
+    {
+        if (currentWave >= 3) playerSkill.canSpecial = true;
+        if (currentWave >= 5) playerSkill.canThrow = true;
+        if (currentWave >= 8) playerSkill.canUlt = true;
+    }
 }
 
 namespace WaveControlInfo

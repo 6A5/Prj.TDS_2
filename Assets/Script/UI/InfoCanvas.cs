@@ -24,6 +24,7 @@ public class InfoCanvas : MonoBehaviour
     public Image throwSkill;
     public Image ultSkill;
 
+    public GameObject fhint;
 
     public static InfoCanvas Instance
     {
@@ -43,6 +44,7 @@ public class InfoCanvas : MonoBehaviour
     private void Update()
     {
         playerInfo.position = player.transform.position + new Vector3(0, playerInfoDist, 0);
+        fhint.transform.position = player.transform.position - new Vector3(0, playerInfoDist, 0);
     }
 
     /// <summary>

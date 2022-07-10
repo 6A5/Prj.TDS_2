@@ -31,6 +31,7 @@ public class GameMenuControl : MonoBehaviour
         _instance = this;
 
         gamePause = false;
+        Time.timeScale = 1;
     }
 
     private void Start()

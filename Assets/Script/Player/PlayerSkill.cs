@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerSkill : MonoBehaviour
@@ -24,6 +23,10 @@ public class PlayerSkill : MonoBehaviour
 
     PlayerAttribute m_attr;
 
+    public bool canSpecial = false;
+    public bool canThrow = false;
+    public bool canUlt = false;
+
     private void Start()
     {
         m_attr = PlayerAttribute.Instance;
@@ -45,9 +48,21 @@ public class PlayerSkill : MonoBehaviour
 
     private void UpdateSkillCooldownUI()
     {
-        InfoCanvas.Instance.spSkill.fillAmount = ((Time.time - bulletCooldownLast[1]) / m_saau[1].cooldown * m_attr.cooldown_p * 0.01f);
-        InfoCanvas.Instance.throwSkill.fillAmount = ((Time.time - bulletCooldownLast[2]) / m_saau[2].cooldown * m_attr.cooldown_p * 0.01f);
-        InfoCanvas.Instance.ultSkill.fillAmount = ((Time.time - bulletCooldownLast[3]) / m_saau[3].cooldown * m_attr.cooldown_p * 0.01f);
+        if (canSpecial)
+        {
+            InfoCanvas.Instance.spSkill.fillAmount =
+                ((Time.time - bulletCooldownLast[1]) / m_saau[1].cooldown * m_attr.cooldown_p * 0.01f);
+        }
+        if (canThrow)
+        {
+            InfoCanvas.Instance.throwSkill.fillAmount =
+                ((Time.time - bulletCooldownLast[2]) / m_saau[2].cooldown * m_attr.cooldown_p * 0.01f);
+        }
+        if (canUlt)
+        {
+            InfoCanvas.Instance.ultSkill.fillAmount =
+                ((Time.time - bulletCooldownLast[3]) / m_saau[3].cooldown * m_attr.cooldown_p * 0.01f);
+        }
     }
 
     private void NormalSkill()
@@ -66,6 +81,7 @@ public class PlayerSkill : MonoBehaviour
 
         if (Input.GetMouseButton(1) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
+            if (!canSpecial) return;
             SpawnProjectile(index);
         }
     }
@@ -76,6 +92,7 @@ public class PlayerSkill : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
+            if (!canThrow) return;
             SpawnProjectile(index);
         }
     }
@@ -86,6 +103,7 @@ public class PlayerSkill : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R) && bulletCooldownLast[index] + m_saau[index].cooldown * m_attr.cooldown_p * 0.01f < Time.time)
         {
+            if (!canUlt) return;
             SpawnProjectile(index);
         }
     }

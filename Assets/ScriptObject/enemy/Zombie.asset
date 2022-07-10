@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Zombie
   m_EditorClassIdentifier: 
   enemyType: 0
-  maxHP: 100
+  maxHP: 120
   damage: 12
   movementSpeed: 4
   cooldown: 0.4

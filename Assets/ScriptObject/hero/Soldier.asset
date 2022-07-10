@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myHSO: {fileID: 11400000}
   _name: ShotGun
-  _damage: 10
+  _damage: 8
   _projectileSpeed: 15
   _projectileCount: 20
   _cooldown: 6.5
@@ -100,14 +100,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myHSO: {fileID: 11400000}
   _name: EnergyBomb
-  _damage: 15
+  _damage: 12
   _projectileSpeed: 8
   _projectileCount: 1
   _cooldown: 8
   _leadTime: 0
   _pulsingTime: 1
   _scope: 2.5
-  _duration: 3
+  _duration: 2.5
   _distance: 10
   _aimOffset: 0
   _knockback: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myHSO: {fileID: 11400000}
   _name: Laser
-  _damage: 5
+  _damage: 3
   _projectileSpeed: 0
   _projectileCount: 1
   _cooldown: 30

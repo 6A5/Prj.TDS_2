@@ -30,13 +30,6 @@ public class EnemyAttribute : MonoBehaviour
 
         m_Col.radius = enemyData.colliderSize;
         m_SprRend.sprite = enemyData.enemyImg;
-
-        enemyType = enemyData.enemyType;
-        maxHP = enemyData.maxHP;
-        damage = enemyData.damage;
-        movementSpeed = enemyData.movementSpeed;
-        cooldown = enemyData.cooldown;
-        coinDropRange = enemyData.coinDropRange;
         #endregion
     }
 
@@ -47,8 +40,15 @@ public class EnemyAttribute : MonoBehaviour
     /// <param name="hpMultiple">生命倍數</param>
     /// <param name="damageMultiple">傷害倍數</param>
     /// <param name="movementMultiple">移動倍數</param>
-    public void SetDiffcultyBonus(float hpMultiple, float damageMultiple, float movementMultiple)
+    public void InitialEnemyAttr(float hpMultiple, float damageMultiple, float movementMultiple)
     {
+        enemyType = enemyData.enemyType;
+        maxHP = enemyData.maxHP;
+        damage = enemyData.damage;
+        movementSpeed = enemyData.movementSpeed;
+        cooldown = enemyData.cooldown;
+        coinDropRange = enemyData.coinDropRange;
+
         maxHP *= hpMultiple;
         damage *= damageMultiple;
         movementSpeed *= movementMultiple;

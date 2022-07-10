@@ -43,8 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.name == "ShopTrigger")
         {
-            InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", true);
-            print("A");
+            InfoCanvas.Instance.fhint.SetActive(true);
         }
     }
 
@@ -52,7 +51,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.name == "ShopTrigger")
         {
-            InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", false);
+            InfoCanvas.Instance.fhint.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (col.name == "ShopTrigger")
+            {
+                InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", true);
+            }
         }
     }
 }

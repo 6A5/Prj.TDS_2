@@ -99,5 +99,15 @@ namespace NkE1.Utilities
 
 
         #endregion
+
+        #region ¼Æ¾Ç
+        public static float RoundToDecimalPlaces(float origin, int decimalPlaces)
+        {
+            var a = (float)Mathf.Round(origin * Mathf.Pow(10, decimalPlaces)) / Mathf.Pow(10, decimalPlaces);
+            return a;
+        }
+        #endregion
     }
 }
+
+

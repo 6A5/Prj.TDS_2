@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NkE1.Utilities;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class PlayerHealth : MonoBehaviour
     public void GotHit(float damage)
     {
         currentHP -= (damage - m_attr.defense);
-        InfoCanvas.Instance.ShowDamageText(transform.position, damage, Color.red);
+        var showDamage = Utils.RoundToDecimalPlaces(damage, 2);
+        InfoCanvas.Instance.ShowDamageText(transform.position, showDamage, Color.red);
         UpdateHPBar();
 
         if (currentHP <= 0)

@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
 
     int coinRequire = 50;
     Button refreshButton;
+    Button closeButton;
     TextMeshProUGUI nextText;
 
     private void Start()
@@ -22,6 +23,9 @@ public class ShopManager : MonoBehaviour
         // 添加刷新按鈕
         refreshButton = this.transform.Find("btnRefresh").GetComponent<Button>();
         refreshButton.onClick.AddListener(() => RefreshButtonEvent());
+        // 添加關閉按鈕
+        closeButton = this.transform.Find("btnClose").GetComponent<Button>();
+        closeButton.onClick.AddListener(() => CloseButtonEvent());
 
         nextText = this.transform.Find("txtNext").GetComponent<TextMeshProUGUI>();
         nextText.text = "Next : " + coinRequire;
@@ -31,10 +35,27 @@ public class ShopManager : MonoBehaviour
 
         shopContainer.gameObject.SetActive(false);
         refreshButton.gameObject.SetActive(false);
+        closeButton.gameObject.SetActive(false);
         nextText.gameObject.SetActive(false);
 
         // 註冊事件
         InGameUIEvents.Instance.uiSwitchEvent.AddListener(ShopUISwitch);
+    }
+
+    void RefreshButtonEvent()
+    {
+        if (PlayerItem.Instance.ownedCoin < 40)
+        {
+            return;
+        }
+
+        RandomItemShowList();
+        PlayerItem.Instance.AddCoin(-40);
+    }
+
+    void CloseButtonEvent()
+    {
+        InGameUIEvents.Instance.uiSwitchEvent.Invoke("Shop", false);
     }
 
     /// <summary>
@@ -87,17 +108,6 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void RefreshButtonEvent()
-    {
-        if (PlayerItem.Instance.ownedCoin < 40)
-        {
-            return;
-        }
-
-        RandomItemShowList();
-        PlayerItem.Instance.AddCoin(-40);
-    }
-
     /// <summary>
     /// 更新圖片
     /// </summary>
@@ -134,10 +144,20 @@ public class ShopManager : MonoBehaviour
     void ShopUISwitch(string name, bool act)
     {
         if (name != "Shop") return;
-        if (act) { Time.timeScale = 0.3f; } else { Time.timeScale = 1f; }
+        if (act)
+        {
+            Time.timeScale = 0f;
+            GameMenuControl.Instance.gamePause = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            GameMenuControl.Instance.gamePause = false;
+        }
 
         shopContainer.gameObject.SetActive(act);
         refreshButton.gameObject.SetActive(act);
+        closeButton.gameObject.SetActive(act);
         nextText.gameObject.SetActive(act);
     }
 }
