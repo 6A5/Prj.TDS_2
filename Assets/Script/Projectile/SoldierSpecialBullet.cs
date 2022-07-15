@@ -26,9 +26,13 @@ public class SoldierSpecialBullet : BaseBullet
     [SerializeField] float colliderRange = 1f;
     [SerializeField] GameObject hitVFX;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Start()
     {
         spawnPoint = transform.position;
+
+        SoundEffectManager.Instance.PlaySound(shotSound,0.05f);
     }
 
     private void Update()

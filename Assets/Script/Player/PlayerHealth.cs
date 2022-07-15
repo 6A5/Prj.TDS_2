@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerAttribute m_attr = null;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Start()
     {
         m_attr = PlayerAttribute.Instance;
@@ -30,7 +32,11 @@ public class PlayerHealth : MonoBehaviour
         {
             WaveControl.Instance.isPlayerDead = true;
             GameMenuControl.Instance.EndGame(false);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
+
+        SoundEffectManager.Instance.PlaySound(shotSound, 0.2f);
     }
 
     IEnumerator RecoverHealthPoint()

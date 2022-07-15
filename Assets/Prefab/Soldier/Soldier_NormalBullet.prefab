@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderRange: 0.1
   hitVFX: {fileID: 4546683859596715991, guid: a67fd2f37426daa4a8cf5c2cf0d39787, type: 3}
+  shotSound: {fileID: 8300000, guid: 51b015a458d6bc44f95aabc5bd6a084a, type: 3}

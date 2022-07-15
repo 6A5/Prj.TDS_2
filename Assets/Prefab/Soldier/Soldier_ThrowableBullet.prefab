@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderRange: 0.2
   circleMat: {fileID: 2100000, guid: 4a621a9a52799d446aa390aa3dfe522c, type: 2}
+  shotSound: {fileID: 8300000, guid: f4e631d3c72eeaf4da2beafb211bfde7, type: 3}
   explodeImage: {fileID: -2413806693520163455, guid: b7673529fee31f84683ad8546b80a3af, type: 3}
 --- !u!114 &1580060389
 MonoBehaviour:

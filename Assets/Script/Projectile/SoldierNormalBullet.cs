@@ -27,9 +27,13 @@ public class SoldierNormalBullet : BaseBullet
 
     [SerializeField] GameObject hitVFX;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Start()
     {
         spawnPoint = transform.position;
+
+        SoundEffectManager.Instance.PlaySound(shotSound);
     }
 
     private void Update()

@@ -153,18 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c23613e879744b4facb6c57c9c84615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_saau:
-    damage: 0
-    projectileSpeed: 0
-    projectileCount: 0
-    cooldown: 0
-    leadTime: 0
-    pulsingTime: 0
-    scope: 0
-    duration: 0
-    distance: 0
-    aimOffset: 0
-    knockback: 0
-    angle: 0
-    projectileObj: {fileID: 0}
   player: {fileID: 0}
+  shotSound: {fileID: 8300000, guid: aeb93f0a79a5d304d9531e51de4b2422, type: 3}

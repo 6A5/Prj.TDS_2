@@ -33,6 +33,8 @@ public class SoldierThrowableBullet : BaseBullet
 
     bool isExploding = false;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Start()
     {
         spawnPoint = transform.position;
@@ -141,6 +143,8 @@ public class SoldierThrowableBullet : BaseBullet
 
     private void CreateExplodeArea()
     {
+        SoundEffectManager.Instance.PlaySound(shotSound);
+
         Destroy(gameObject.GetComponent<Light2D>());
         SpriteRenderer m_spr = GetComponent<SpriteRenderer>();
         m_spr.material = circleMat;

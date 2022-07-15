@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     private float currentHP;
     private SpriteRenderer m_spr;
 
+    [SerializeField] AudioClip hitSound;
+
     private void Awake()
     {
         enemyAttr = GetComponent<EnemyAttribute>();
@@ -23,7 +25,6 @@ public class EnemyHealth : MonoBehaviour
         currentHP = enemyAttr.maxHP;
         m_spr = GetComponent<SpriteRenderer>();
         m_spr.material = new Material(enemyMat);
-
     }
 
     /// <summary>
@@ -43,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
             PlayerItem.Instance.AddCoin((int)Random.Range(enemyAttr.coinDropRange.x, enemyAttr.coinDropRange.y));
             Destroy(gameObject);
         }
+
+        SoundEffectManager.Instance.PlaySound(hitSound);
     }
 
     /// <summary>

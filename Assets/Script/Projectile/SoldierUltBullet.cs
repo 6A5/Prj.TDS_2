@@ -29,13 +29,16 @@ public class SoldierUltBullet : BaseBullet
     LineRenderer m_lr;
     RaycastHit2D ray;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         m_lr = GetComponent<LineRenderer>();
         m_lr.positionCount = 2;
         StartCoroutine(LeadAnimation());
-        
+
+        SoundEffectManager.Instance.PlaySound(shotSound);
     }
 
     private void Update()

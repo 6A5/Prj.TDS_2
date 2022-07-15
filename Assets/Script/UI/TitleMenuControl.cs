@@ -11,6 +11,8 @@ public class TitleMenuControl : MonoBehaviour
     [SerializeField] private Button btnCharNo;
     [SerializeField] private Button btnStaOk;
     [SerializeField] private Button btnStaNo;
+    [SerializeField] private Button btnHint;
+    [SerializeField] private GameObject menuHint;
     [SerializeField] private GameObject menuCharacter;
     [SerializeField] private GameObject menuStage;
 
@@ -22,6 +24,13 @@ public class TitleMenuControl : MonoBehaviour
 
     private void InitializeTitleMenuButton()
     {
+        btnStartGame.onClick.RemoveAllListeners();
+        btnCharNo.onClick.RemoveAllListeners();
+        btnCharOk.onClick.RemoveAllListeners();
+        btnStaNo.onClick.RemoveAllListeners();
+        btnStaOk.onClick.RemoveAllListeners();
+        btnHint.onClick.RemoveAllListeners();
+
         // 打開選角菜單
         btnStartGame.onClick.AddListener(() => OpenAndCloseUI(menuCharacter));
         // 關閉選角菜單
@@ -32,6 +41,8 @@ public class TitleMenuControl : MonoBehaviour
         btnStaNo.onClick.AddListener(() => OpenAndCloseUI(menuCharacter, menuStage));
         // 確認選關
         btnStaOk.onClick.AddListener(() => sc.ChangeScene("GameTesting"));
+        // 開啟關閉提示
+        btnHint.onClick.AddListener(() => SwitchUI(menuHint));
     }
 
     /// <summary>
@@ -45,5 +56,12 @@ public class TitleMenuControl : MonoBehaviour
         if(close != null) close.SetActive(false);
     }
 
-    
+    /// <summary>
+    /// 開啟或關閉菜單
+    /// </summary>
+    /// <param name="ui">指定的菜單</param>
+    private void SwitchUI(GameObject ui)
+    {
+        ui.SetActive(!ui.activeSelf);
+    }
 }
